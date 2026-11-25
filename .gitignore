@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+datasets/
+pretrained_pth/
+run_files/
+results/
+*.pth
+*.pt
