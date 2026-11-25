@@ -61,13 +61,7 @@ under-segmentation: G * (1 - R)
 contour:           dilate(G, 5×5) - erode(G, 5×5)
 ```
 
-Prepare reference predictions for the training and validation samples, then run:
-
-```bash
-python tools/prepare_cues.py --dataset-dir ./datasets/GlaS --reference-dir ./reference_predictions/GlaS
-```
-
-Reference maps are single-channel images with probability values encoded from 0 to 255; binary 0/255 reference masks are also accepted. Filenames must match the ground-truth stems. The paper initializes reference predictions with MedSAM2; this repository accepts already generated predictions and does not include the MedSAM2 prompting/inference pipeline.
+Generate the three supervision maps from reference predictions for the training and validation samples using the formulas above, and save them in the corresponding `error_masks/` directories as 8-bit images with values from 0 to 255. Filenames must match the ground-truth stems. The paper initializes reference predictions with MedSAM2; reference inference and auxiliary-map generation are performed outside this repository.
 
 The trainer refreshes training FP/FN maps from the best validation checkpoint during its configured refresh window. Evaluation does not need reference predictions or auxiliary supervision maps.
 
@@ -123,15 +117,7 @@ with torch.no_grad():
     binary_mask = probability > 0.5
 ```
 
-The loader supports legacy CorrFlow module names, DataParallel `module.` prefixes, and common checkpoint wrappers. For implementation details and validation scope, see [implementation notes](docs/implementation.md).
-
-## Smoke checks
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-These checks use synthetic data and do not require datasets or pretrained weights.
+The loader supports legacy CorrFlow module names, DataParallel `module.` prefixes, and common checkpoint wrappers.
 
 ## Acknowledgements
 

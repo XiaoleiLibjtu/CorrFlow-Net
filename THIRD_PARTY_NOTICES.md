@@ -7,7 +7,7 @@
 - Project: https://github.com/whai362/PVT
 - Source: https://github.com/whai362/PVT/blob/v2/classification/pvt_v2.py
 - Upstream license: Apache License 2.0
-- License text retained in [third_party/PVT-LICENSE](third_party/PVT-LICENSE).
+- License text retained in [PVT-LICENSE](PVT-LICENSE).
 
 Local modifications adapt the backbone for segmentation feature extraction and remove unused classification/commented code. The upstream license text retains its original notices. No project-wide license is assigned to the original CorrFlow-Net code in this release.
 

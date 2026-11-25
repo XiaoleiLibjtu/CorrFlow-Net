@@ -1,5 +1,5 @@
 # Adapted from https://github.com/whai362/PVT/blob/v2/classification/pvt_v2.py
-# Upstream license: Apache-2.0; see third_party/PVT-LICENSE.
+# Upstream license: Apache-2.0; see PVT-LICENSE.
 # Modified for segmentation feature extraction and code cleanup.
 import torch
 import torch.nn as nn
